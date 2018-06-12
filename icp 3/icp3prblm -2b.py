@@ -8,9 +8,9 @@ html = urllib.request.urlopen("https://en.wikipedia.org/wiki/List_of_state_and_u
 
 soup = BeautifulSoup(html, "html.parser")
 
-theClass = soup.find_all("table", {"class": "vertical-navbox nowraplinks"})
+class = soup.find_all("table", {"class": "vertical-navbox nowraplinks"})
 
-for tr in theClass:
+for tr in class:
     print(tr)
     for th in tr:
         print(th)
