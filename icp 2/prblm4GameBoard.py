@@ -28,6 +28,8 @@
 # # # print ("")
 
 
+
+
 def horizontal_line ( size ):
     return " ---" * size + " \n"
 
@@ -38,19 +40,16 @@ def gameboard ( size ):
     board = """"""
     for i in range(size):
         board += horizontal_line(size)
-        board += vertical_lines(size)
+        board += vertical_lines(widthinp)
     board += horizontal_line(size)
     return board
 
-if __name__ == "__main__":
+# if __name__ == "__main__":
 
-    size = int(input("Enter the height of the board: "))
-    widthinp = int(input("Enter the width of the board: "))
-    # board_draw(heightinp, widthinp)
+size = int(input("Enter the height of the board: "))
+widthinp = int(input("Enter the width of the board: "))
 
-
-    print(gameboard(size))
-
+print(gameboard(size))
 
 
 
