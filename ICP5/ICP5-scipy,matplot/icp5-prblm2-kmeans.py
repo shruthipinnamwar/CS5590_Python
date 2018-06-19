@@ -69,7 +69,9 @@ def init_graph(N, p1, p2):
 
 def Simulate_Clusters():
     print(".........Starting Cluster Simulation.........")
-    N = int(input('Strength of the university:')) #no. of students in the university
+    #no. of students in the university
+    
+    N = int(input('Strength of the university:')) 
 #   
    
     K = 3 #no.of sizes i Need
@@ -77,8 +79,7 @@ def Simulate_Clusters():
     p1 = 6.2 #maximum height
     p2 = 5 #minimum Height
     
-#    p1 = int(input('Enter the lower bound for points.......'))
-#    p2 = int(input('Enter the upper bound for points.......'))
+
     X = init_graph(N, p1, p2)
     plt.scatter(X[:, 0], X[:, 1])
     plt.show()
