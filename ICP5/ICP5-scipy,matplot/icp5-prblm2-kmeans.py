@@ -15,44 +15,44 @@ def create_cluster(X, centroid_pts):
             cluster[value] = [x]
     return cluster
 
-
+#Callulating new centre using mean func
 def calculate_new_center(cluster):
     keys =sorted(cluster.keys())
     newmu = np.array([(np.mean(cluster[k],axis = 0))for k in keys])
     return newmu
-
+#checking if new centoid points matches with lod
 def matched(new_centroids, old_centroids):
     return (set([tuple(a)for a in new_centroids]) == set([tuple(a)for a in old_centroids]))
-
+#applying Kmeans algorithm
 def Apply_Kmeans(X, K, N):
     # selecting random centroids from dataset and by number of clusters.
     old_centroids = np.random.randint(N, size = K)
     old_centroid_pts = np.array([X[i]for i in old_centroids])
-
+#printing old centroid points
     print("old :",old_centroids)
     print(old_centroid_pts)
 
     cluster_info = create_cluster(X, old_centroid_pts)
-
+ # printing initial cluster info
     print("Initial cluster information:")
     print(cluster_info)
-
     new_centroid_pts=calculate_new_center(cluster_info)
     print("new :", new_centroid_pts)
     itr = 0
     print("Graph after selecting initial clusters with initial centroids:")
     plot_cluster(old_centroid_pts,cluster_info,itr)
+    # looping through new centroid points until they match with old centroid points
     while not matched(new_centroid_pts, old_centroid_pts):
-        itr = itr + 1
+        itr = itr + 1 # count variable
         old_centroid_pts = new_centroid_pts
         cluster_info = create_cluster(X,new_centroid_pts)
         plot_cluster(new_centroid_pts, cluster_info,itr)
         new_centroid_pts = calculate_new_center(cluster_info)
-
+#printing the new centroid points after the final interation
     print("Results after final iteration:")
     plot_cluster(new_centroid_pts, cluster_info, itr)
     return
-
+#using matplot to plot the cluster
 def plot_cluster(mu,cluster, itr):
     color = 10 * ['r.','g.','k.','c.','b.','m.']
     print('Iteration number : ',itr)
@@ -69,8 +69,7 @@ def init_graph(N, p1, p2):
 
 def Simulate_Clusters():
     print(".........Starting Cluster Simulation.........")
-    #no. of students in the university
-    
+    #no. of students in the university   
     N = int(input('Strength of the university:')) 
 #   
    

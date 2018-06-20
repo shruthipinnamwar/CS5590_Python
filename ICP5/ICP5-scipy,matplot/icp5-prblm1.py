@@ -1,43 +1,37 @@
-import csv
 import numpy as np
-from sklearn import linear_model
-import matplotlib.pyplot as plt
+import matplotlib.pyplot as mpl
 
-X = []
-Y = []
+# Create 2 arraysas given in the problem
+x = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+y = [1, 3, 2, 5, 7, 8, 8, 9, 10, 12]
+mpl.plot(x, y, 'bo')
+mpl.show()  #initial values
 
+# y = mx + b
+# Find m (slope)
+meanx = np.mean(x)  # mean of x
+meany = np.mean(y)  # Mean of y
+i = 0  
+n = 0  
+d = 0
+while i < len(x):  #looping x array
+    # using formula from the ppt
+    n += (x[i] - meanx) * (y[i] - meany)
+    d += (x[i] - meanx) * (x[i] - meany)
+    i += 1
+m = round(n/d, 2)
 
-                    #get the data and append it to ARRAY
-def get_data(filename):
-    with open(filename, 'r') as csvfile:
-        csvFileReader = csv.reader(csvfile)
-        next(csvFileReader)  # skipping column names
-        for row in csvFileReader:
-            #print(', '.join(row))
-            X.append(int(row[0]))
-            Y.append(int(row[1]))
-    return
+b = 1 #y intercept
 
-                      #PLot the graph
-def show_plot(X, Y):
-    linear_mod = linear_model.LinearRegression()
-    X = np.reshape(X, (len(X), 1))  # converting to matrix of n X 1
-    Y = np.reshape(Y, (len(Y), 1))
-    linear_mod.fit(X, Y)  # fitting the data points in the model
-    plt.scatter(X, Y, color='orange')  # plotting the initial datapoints
-    plt.plot(X, linear_mod.predict(X), color='green', linewidth=3)  # plotting the line made by linear regression
-    plt.show()
-    return
+print(len(y))
+y2 = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]  
+j = 0  
 
+while j < len(y):
+    y2[j] = (m * x[j]) + b
+    j += 1
 
-
-
-get_data('tabledata.csv')  # calling get_data method by passing the csv file to it
-print
-X
-print
-Y
-print
-"\n"
-
-show_plot(X, Y)
+mpl.plot(x, y, 'bo')
+mpl.plot(x, y2)
+mpl.show()
+print(x, y2) #printing the final values using matplot
