@@ -17,7 +17,7 @@ d = 0
 while i < len(x):  #looping x array
     # using formula from the ppt
     n += (x[i] - meanx) * (y[i] - meany)
-    d += (x[i] - meanx) * (x[i] - meany)
+    d += (x[i] - meanx) * (x[i] - meanx)
     i += 1
 m = round(n/d, 2)
 
